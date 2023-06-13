@@ -11,7 +11,14 @@ class GasPage extends StatefulWidget {
 }
 
 class _GasPageState extends State<GasPage> {
+  GasController? gasProvider;
   @override
+  void initState() {
+    gasProvider = Provider.of<GasController>(context, listen: false);
+    gasProvider?.fetchGas();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +26,6 @@ class _GasPageState extends State<GasPage> {
       body: Center(
         child: Consumer<GasController>(
           builder: (context, gasProvider, child) {
-            gasProvider.fetchGas();
             return ListView.builder(
               itemCount: gasProvider.gas.length,
               itemBuilder: (context, index) {

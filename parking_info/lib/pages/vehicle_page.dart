@@ -40,12 +40,12 @@ class _VehiclePageState extends State<VehiclePage> {
                     style: const TextStyle(fontSize: 18),
                   ),
                   leading: const Icon(Icons.local_parking),
-                  iconColor: entriesController.entries[index].exitTimestamp ==
-                          DateTime.fromMicrosecondsSinceEpoch(0)
-                      ? Colors.red
-                      : entriesController.entries[index].paid
+                  iconColor: entriesController.entries[index].paid
+                      ? entriesController.entries[index].exitTimestamp ==
+                              DateTime.fromMicrosecondsSinceEpoch(0)
                           ? Colors.green
-                          : Colors.grey,
+                          : Colors.grey
+                      : Colors.red,
                   subtitle: Text(
                     entriesController.entries[index].exitTimestamp ==
                             DateTime.fromMicrosecondsSinceEpoch(0)

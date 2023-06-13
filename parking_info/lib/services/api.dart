@@ -66,6 +66,6 @@ class ApiService {
 
   Future<double> getFeesSum() async {
     Response response = await dioClient.get("/entries/fees/sum");
-    return response.data['fees_sum'];
+    return response.data['fees_sum'] ?? 0.0;
   }
 }
